@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Up</title>
+    <link rel="shortcut icon" href="favicon.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pushy/1.1.0/css/pushy.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/navbar/navigation-clean.css">
+    <link rel="stylesheet" href="assets/css/navbar/navigation-center-brand.css">
+    <link rel="stylesheet" href="assets/css/navbar/navigation-pushy.css">
+    <link rel="stylesheet" href="assets/css/navbar/navigation-block.css">
+    <link rel="stylesheet" href="assets/css/hero/application-hero.css">
+    <link rel="stylesheet" href="assets/css/hero/classic-cars-hero.css">
+    <link rel="stylesheet" href="assets/css/hero/main-hero.css">
+    <link rel="stylesheet" href="assets/css/hero/baby-carrier-hero.css">
+    <link rel="stylesheet" href="assets/css/hero/freelancer-hero.css">
+    <link rel="stylesheet" href="assets/css/hero/demo-select-hero.css">
+    <link rel="stylesheet" href="assets/css/hero/single-product-hero.css">
+    <link rel="stylesheet" href="assets/css/content-block/dual-content.css">
+    <link rel="stylesheet" href="assets/css/content-block/triple-content.css">
+    <link rel="stylesheet" href="assets/css/content-block/statistics.css">
+    <link rel="stylesheet" href="assets/css/content-block/twitterfeed.css">
+    <link rel="stylesheet" href="assets/css/content-block/testimonial.css">
+    <link rel="stylesheet" href="assets/css/content-block/pricing-table.css">
+    <link rel="stylesheet" href="assets/css/content-block/showcase.css">
+    <link rel="stylesheet" href="assets/css/content-block/works.css">
+    <link rel="stylesheet" href="assets/css/content-block/brands.css">
+    <link rel="stylesheet" href="assets/css/content-block/features-icon.css">
+    <link rel="stylesheet" href="assets/css/content-block/info-box.css">
+    <link rel="stylesheet" href="assets/css/content-block/form-box.css">
+    <link rel="stylesheet" href="assets/css/content-block/products.css">
+    <link rel="stylesheet" href="assets/css/content-block/single-product.css">
+    <link rel="stylesheet" href="assets/css/content-block/month-product.css">
+    <link rel="stylesheet" href="assets/css/content-block/newsletter-form.css">
+    <link rel="stylesheet" href="assets/css/content-block/promotion-content.css">
+    <link rel="stylesheet" href="assets/css/content-block/video-box.css">
+    <link rel="stylesheet" href="assets/css/content-block/team.css">
+    <link rel="stylesheet" href="assets/css/content-block/instafeed.css">
+    <link rel="stylesheet" href="assets/css/content-block/zig-zag.css">
+    <link rel="stylesheet" href="assets/css/animate-horizontal.css">
+    <link rel="stylesheet" href="assets/css/spacing-helper.css">
+    <link rel="stylesheet" href="assets/css/basic.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+
+
+    $(document).ready(function(){
+
+      function sendDatatoBackend(){
+        var url = window.location.href;
+        console.log(url);
+        var matchs = url.match(/\?.+/g);
+        var params = matchs[0].replace('?','').split('&');
+        var obj = {}
+        var p2 = params.forEach(function(item,i){
+          var key = item.split('=')[0]
+          var value = item.split('=')[1]
+          obj[key] = value;
+        })
+        $.ajax({
+          type: "POST",
+          url: 'https://evening-retreat-44145.herokuapp.com/deposits',
+          data: obj
+        });
+      }
+
+      sendDatatoBackend();
+
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+      if(getParameterByName("authResult")=="REFUSED"){
+        $("#mensaje").text("Tu depósito no pudo ser realizado, porfavor intenta de nuevo")
+      }else{
+        $("#mensaje").text("Tu depósito ha sido realizado con éxito, recibirás un correo dentro de los próximos 10 minutos")
+      }})
+    </script>
+
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <section id="product" class="element element-application-hero layer-parallax p-t-115 p-b-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 p-b-60">
+                    <div class="element-title">
+                        <p id="mensaje" class="text-center font-def"></p>
+                        <p class="text-center font-xs"></p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+</body>
+
+</html>
