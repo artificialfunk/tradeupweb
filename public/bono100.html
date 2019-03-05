@@ -26,13 +26,13 @@
     <iframe id="myiframe" frameborder="0" style="display: block;"></iframe>
     <script>
         function getiframesrc() {
-            var pdfurl = 'https://www.tradeupmarkets.com/bono100.pdf';
+            var pdfurl = 'https://www.tradeupmarkets.com/bonocien.pdf';
             pdfurl = 'https://docs.google.com/gview?url=' + pdfurl + '&embedded=true';
 
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
             if (/android/i.test(userAgent)) {
-                document.getElementById('myiframe').src = 'bono100.pdf'
+                document.getElementById('myiframe').src = 'bonocien.pdf'
                 return;
             }
             document.getElementById('myiframe').src = pdfurl;
