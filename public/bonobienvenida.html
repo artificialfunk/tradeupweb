@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Términos y condiciones de Bonus</title>
+    <title>Bono de Bienvenida</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="favicon.png" />
 
@@ -26,13 +26,13 @@
     <iframe id="myiframe" frameborder="0" style="display: block;"></iframe>
     <script>
         function getiframesrc() {
-            var pdfurl = 'https://www.tradeupmarkets.com/bonus100.pdf';
+            var pdfurl = 'https://www.tradeupmarkets.com/bonobienvenida.pdf';
             pdfurl = 'https://docs.google.com/gview?url=' + pdfurl + '&embedded=true';
 
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
             if (/android/i.test(userAgent)) {
-                document.getElementById('myiframe').src = 'bonus100.pdf'
+                document.getElementById('myiframe').src = 'bonobienvenida.pdf'
                 return;
             }
             document.getElementById('myiframe').src = pdfurl;
